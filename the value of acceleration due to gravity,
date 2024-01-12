@@ -1,0 +1,26 @@
+ A ball is released from a height of Y meters. Each time it bounces on the floor, its velocity becomes halved. Write a program, which reads the value of Y and prints the total distance traversed by the ball when it touches the ground for the third time.
+Assume that the value of acceleration due to gravity, g, is 9.8
+program:
+#include <stdio.h>
+
+int main() {
+  double y, total_distance, current_height;
+  printf("Enter initial height (y meters): ");
+  scanf("%lf", &y);
+
+  const double g = 9.8;
+
+  total_distance = 0;
+  current_height = y;
+
+  for (int i = 0; i < 3; i++) {
+    
+    double bounce_height = current_height / 2;
+
+    total_distance += current_height + bounce_height;
+    
+    current_height = bounce_height;
+  }
+  printf("Total distance traveled: %.2f meters\n", total_distance);
+  return 0;
+}
