@@ -1,0 +1,31 @@
+Write a program to enter marks of five subjects of a student and calculate total, average and percentage of all subjects.
+program:
+
+#include<stdio.h>
+int main()
+{
+    int maths, chemistry, physics, biology, history, total;
+    float average, percentage;
+    printf("enter the subject maths marks: ");
+    scanf("%d", &maths);
+    printf("enter the subject chemistry marks: ");
+    scanf("%d", &chemistry);
+    printf("enter the subject physics marks: ");
+    scanf("%d", &physics);
+    printf("enter the subject biology marks: ");
+    scanf("%d", &biology);
+    printf("enter the subject history marks: ");
+    scanf("%d", &history);
+
+    total = maths + chemistry + physics + biology + history;
+    printf("the total marks of the five subjects is: %d\n", total);
+
+    average = (float)(maths + chemistry + physics + biology + history) / 5;
+    printf("the average marks of the 5 subjects is: %f\n", average);
+
+    percentage = ((float)total / 500) * 100;
+    printf("the percentage of the 5 subjects is: %f\n", percentage);
+    return 0;
+}
+
+
