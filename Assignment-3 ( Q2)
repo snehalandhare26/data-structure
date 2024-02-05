@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct SortInfo {
+int value;
+int distance;
+};
+int absDistance(int x, int y) {
+return abs(x - y);
+}
+
+int compareDistances(const void* a, const void* b) {
+int distance_a = ((struct SortInfo*)a)->distance;
+
+int distance_b = ((struct SortInfo*)b)->distance;
+return distance_a - distance_b;
+}
+void dist_sort(int x[], int n, int z) {
+SortInfo* infoArray = new SortInfo[n];
+delete[] infoArray;
+
+for (int i = 0; i < n; i++) {
+infoArray[i].value = x[i];
+infoArray[i].distance = absDistance(x[i], z);
+}
+qsort(infoArray, n, sizeof(struct SortInfo), compareDistances);
+for (int i = 0; i < n; i++) {
+x[i] = infoArray[i].value;
+}
+free(infoArray);
+}
+
+void printArray(int x[], int n) {
+for (int i = 0; i < n; i++) {
+printf("%d ", x[i]);
+}
+printf("\n");
+}
+int main() {
+int x[] = {9, 1, 12, 4, 2};
+int n = sizeof(x) / sizeof(x[0]);
+int z = 6;
+printf("Original Array: ");
+printArray(x, n);
+dist_sort(x, n, z);
+printf("Sorted Array by Absolute Distances from %d: ", z);
+printArray(x, n);
+return 0;
+}
